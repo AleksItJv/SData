@@ -15,4 +15,12 @@ public class User {
     private int age;
     @Column(unique = true)
     private String email;
+
+    public User(){}
+    public User(String login, String name, int age, String email) {
+        this.login = login;
+        this.name = name;
+        this.age = age;
+        this.email = email;
+    }
 }

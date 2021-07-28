@@ -5,6 +5,7 @@ import com.app.dao.repositories.UserRepository;
 import com.app.entities.User;
 import com.google.common.collect.Lists;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -20,8 +21,9 @@ public class UserService implements UserDAO {
     }
 
     @Override
-    public void addUser(User user) {
+    public User addUser(User user) {
         userRepository.save(user);
+        return user;
     }
 
     @Override
@@ -42,5 +44,11 @@ public class UserService implements UserDAO {
     @Override
     public List<User> getUsersByLogin(String login) {
         return Lists.newArrayList(userRepository.getUserByLogin(login));
+    }
+
+    @Override
+    public User deleteUser(User user) {
+        userRepository.delete(user);
+        return user;
     }
 }
